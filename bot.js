@@ -1,7 +1,7 @@
 const discord = require('discord.js');
 const bot = new discord.Client();
 
-let token = "your token here";
+let token = process.env.BOT_TOKEN;
 let prefix = "$";
 
 
