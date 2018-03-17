@@ -16,7 +16,7 @@ bot.on('ready', function() {
 var servers = {};
 
 var randoms = [
-	["It is certain",
+	"It is certain",
 	 "It is decidedly so",
 	 "Without a doubt",
 	 "Yes, definitely",
