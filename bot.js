@@ -46,24 +46,29 @@ bot.on('message', function(msg) {
     const command = args.shift().toLowerCase();
 
     let user = msg.mentions.users.first();
-	if (!user) {
-		user = msg.author;
-	}
+	if (!user) user = msg.author;
 	let status = user.presence.status;
-	if (status === 'online') {
-		status = 'Online';
-	} else if (status === 'idle') {
-		status = 'Idle';
-	} else if (status === 'dnd') {
-		status = 'Do Not Disturb';
-	} else {
-		status = 'Invisible';
+	switch(status) {
+		case 'online':
+			status = 'Online';
+			break;
+		case 'idle':
+			status = 'Idle';
+			break;
+		case 'dnd':
+			status = 'Do Not Disturb';
+			break;
+		default:
+			status = 'Invisible';
+			break;
 	}
+	
 	let stream = false;
-	if (user.presence.game && user.presence.game.streaming) {
-		stream = true;
-	}
+	
+	if (user.presence.game && user.presence.game.streaming) stream = true;
+	
 	let game;
+	
 	if (user.presence.game === null) {
 		game = 'No Game Displayed';
 	} else if (user.presence.game.streaming) {
